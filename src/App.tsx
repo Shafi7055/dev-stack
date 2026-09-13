@@ -1,6 +1,9 @@
+import { Navbar } from './components/Navbar';
+
 function App() {
   return (
-    <div className="min-h-screen bg-slate-900 text-slate-100 font-sans">
+    <div className="min-h-screen bg-slate-950 text-slate-100 font-sans">
+      <Navbar stackCount={0} />
       <main className="max-w-7xl mx-auto px-4 py-8">
         <h1 className="text-3xl font-bold text-center gradient-text mb-4">
           DevStack Builder Initialized
@@ -11,3 +14,4 @@ function App() {
 }
 
 export default App;
+
