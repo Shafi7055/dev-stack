@@ -1,0 +1,29 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+:root {
+  --gradient-text: linear-gradient(135deg, #ff5e62 0%, #ff9966 50%, #8a2be2 100%);
+  --gradient-bg: linear-gradient(135deg, #ff5e62 0%, #ff9966 50%, #8a2be2 100%);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #f97316 0%, #ec4899 50%, #8b5cf6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-bg {
+  background: linear-gradient(135deg, #f97316 0%, #ec4899 50%, #8b5cf6 100%);
+}
+
+.gradient-btn {
+  background: linear-gradient(135deg, #f97316 0%, #ec4899 50%, #8b5cf6 100%);
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.gradient-btn:hover {
+  opacity: 0.92;
+  transform: translateY(-1px);
+  box-shadow: 0 10px 20px -5px rgba(236, 72, 153, 0.4);
+}
