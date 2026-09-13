@@ -4,6 +4,7 @@ import { Navbar } from './components/Navbar';
 import { Banner } from './components/Banner';
 import { TechCards } from './components/TechCards';
 import { YourStack } from './components/YourStack';
+import { Footer } from './components/Footer';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -76,35 +77,39 @@ function App() {
   const selectedTechIds = selectedStack.map((item) => item.id);
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 font-sans">
-      <Navbar stackCount={selectedStack.length} />
+    <div className="min-h-screen bg-slate-950 text-slate-100 font-sans flex flex-col justify-between">
+      <div>
+        <Navbar stackCount={selectedStack.length} />
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-16">
-        <Banner />
+        <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-16">
+          <Banner />
 
-        {/* Main Content Layout: Grid + Sidebar */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          {/* Tech Cards (8 Cols on Desktop) */}
-          <div className="lg:col-span-8">
-            <TechCards
-              technologies={technologies}
-              isLoading={isLoading}
-              error={error}
-              selectedTechIds={selectedTechIds}
-              onAddToStack={handleAddToStack}
-            />
+          {/* Main Content Layout: Grid + Sidebar */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            {/* Tech Cards (8 Cols on Desktop) */}
+            <div className="lg:col-span-8">
+              <TechCards
+                technologies={technologies}
+                isLoading={isLoading}
+                error={error}
+                selectedTechIds={selectedTechIds}
+                onAddToStack={handleAddToStack}
+              />
+            </div>
+
+            {/* Your Stack Sidebar (4 Cols on Desktop) */}
+            <div className="lg:col-span-4">
+              <YourStack
+                stack={selectedStack}
+                onRemoveFromStack={handleRemoveFromStack}
+                onClearStack={handleClearStack}
+              />
+            </div>
           </div>
+        </main>
+      </div>
 
-          {/* Your Stack Sidebar (4 Cols on Desktop) */}
-          <div className="lg:col-span-4">
-            <YourStack
-              stack={selectedStack}
-              onRemoveFromStack={handleRemoveFromStack}
-              onClearStack={handleClearStack}
-            />
-          </div>
-        </div>
-      </main>
+      <Footer />
 
       {/* Toast Notification Container */}
       <ToastContainer
