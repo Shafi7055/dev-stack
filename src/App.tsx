@@ -4,6 +4,7 @@ import { Navbar } from './components/Navbar';
 import { Banner } from './components/Banner';
 import { TechCards } from './components/TechCards';
 import { YourStack } from './components/YourStack';
+import { ReactQA } from './components/ReactQA';
 import { Footer } from './components/Footer';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -106,6 +107,9 @@ function App() {
               />
             </div>
           </div>
+
+          {/* React Q&A Section */}
+          <ReactQA />
         </main>
       </div>
 
