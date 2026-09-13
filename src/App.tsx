@@ -3,6 +3,7 @@ import type { TechnologyType } from './types';
 import { Navbar } from './components/Navbar';
 import { Banner } from './components/Banner';
 import { TechCards } from './components/TechCards';
+import { YourStack } from './components/YourStack';
 
 function App() {
   const [technologies, setTechnologies] = useState<TechnologyType[]>([]);
@@ -38,20 +39,45 @@ function App() {
     setSelectedStack((prev) => [...prev, tech]);
   };
 
+  const handleRemoveFromStack = (techId: string) => {
+    setSelectedStack((prev) => prev.filter((tech) => tech.id !== techId));
+  };
+
+  const handleClearStack = () => {
+    setSelectedStack([]);
+  };
+
   const selectedTechIds = selectedStack.map((item) => item.id);
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 font-sans">
       <Navbar stackCount={selectedStack.length} />
+
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-16">
         <Banner />
-        <TechCards
-          technologies={technologies}
-          isLoading={isLoading}
-          error={error}
-          selectedTechIds={selectedTechIds}
-          onAddToStack={handleAddToStack}
-        />
+
+        {/* Main Content Layout: Grid + Sidebar */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          {/* Tech Cards (8 Cols on Desktop) */}
+          <div className="lg:col-span-8">
+            <TechCards
+              technologies={technologies}
+              isLoading={isLoading}
+              error={error}
+              selectedTechIds={selectedTechIds}
+              onAddToStack={handleAddToStack}
+            />
+          </div>
+
+          {/* Your Stack Sidebar (4 Cols on Desktop) */}
+          <div className="lg:col-span-4">
+            <YourStack
+              stack={selectedStack}
+              onRemoveFromStack={handleRemoveFromStack}
+              onClearStack={handleClearStack}
+            />
+          </div>
+        </div>
       </main>
     </div>
   );
