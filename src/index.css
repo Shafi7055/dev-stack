@@ -2,28 +2,49 @@
 @plugin "daisyui";
 
 :root {
-  --gradient-text: linear-gradient(135deg, #ff5e62 0%, #ff9966 50%, #8a2be2 100%);
-  --gradient-bg: linear-gradient(135deg, #ff5e62 0%, #ff9966 50%, #8a2be2 100%);
+  --primary-gradient: linear-gradient(135deg, #eb3b7a 0%, #ec4899 45%, #c084fc 100%);
+}
+
+body {
+  background-color: #ffffff;
+  color: #0f172a;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 
 .gradient-text {
-  background: linear-gradient(135deg, #f97316 0%, #ec4899 50%, #8b5cf6 100%);
+  background: linear-gradient(135deg, #e11d48 0%, #ec4899 50%, #a855f7 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .gradient-bg {
-  background: linear-gradient(135deg, #f97316 0%, #ec4899 50%, #8b5cf6 100%);
+  background: linear-gradient(135deg, #eb3b7a 0%, #ec4899 50%, #d946ef 100%);
 }
 
 .gradient-btn {
-  background: linear-gradient(135deg, #f97316 0%, #ec4899 50%, #8b5cf6 100%);
-  color: white;
-  transition: all 0.3s ease;
+  background: linear-gradient(135deg, #eb3b7a 0%, #ec4899 60%, #d946ef 100%);
+  color: #ffffff;
+  transition: all 0.2s ease-in-out;
 }
 
 .gradient-btn:hover {
-  opacity: 0.92;
-  transform: translateY(-1px);
-  box-shadow: 0 10px 20px -5px rgba(236, 72, 153, 0.4);
+  opacity: 0.95;
+  box-shadow: 0 8px 20px -4px rgba(236, 72, 153, 0.35);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
 }

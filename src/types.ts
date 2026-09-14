@@ -5,7 +5,8 @@ export interface TechnologyType {
   description: string;
   icon: string;
   badge?: string;
+  badgeColor?: string;
   rating: number;
-  difficulty: 'Beginner' | 'Intermediate' | 'Advanced';
+  difficulty: string;
   docsUrl?: string;
 }

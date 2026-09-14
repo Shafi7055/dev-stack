@@ -4,7 +4,6 @@ import { Navbar } from './components/Navbar';
 import { Banner } from './components/Banner';
 import { TechCards } from './components/TechCards';
 import { YourStack } from './components/YourStack';
-import { ReactQA } from './components/ReactQA';
 import { Footer } from './components/Footer';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -38,18 +37,18 @@ function App() {
 
   const handleAddToStack = (tech: TechnologyType) => {
     if (selectedStack.some((item) => item.id === tech.id)) {
-      toast.warning(`⚠️ ${tech.name} is already in your stack!`, {
+      toast.info(`${tech.name} is already in your stack!`, {
         position: 'top-right',
-        autoClose: 3000,
-        theme: 'dark',
+        autoClose: 2500,
+        theme: 'light',
       });
       return;
     }
     setSelectedStack((prev) => [...prev, tech]);
-    toast.success(`🚀 ${tech.name} added to your stack!`, {
+    toast.success(`${tech.name} added to your stack!`, {
       position: 'top-right',
-      autoClose: 2500,
-      theme: 'dark',
+      autoClose: 2000,
+      theme: 'light',
     });
   };
 
@@ -57,10 +56,10 @@ function App() {
     const removedTech = selectedStack.find((t) => t.id === techId);
     setSelectedStack((prev) => prev.filter((tech) => tech.id !== techId));
     if (removedTech) {
-      toast.info(`🗑️ ${removedTech.name} removed from stack`, {
+      toast.info(`${removedTech.name} removed from stack`, {
         position: 'top-right',
-        autoClose: 2500,
-        theme: 'dark',
+        autoClose: 2000,
+        theme: 'light',
       });
     }
   };
@@ -68,21 +67,21 @@ function App() {
   const handleClearStack = () => {
     if (selectedStack.length === 0) return;
     setSelectedStack([]);
-    toast.error('🧹 Entire stack cleared!', {
+    toast.info('Stack cleared!', {
       position: 'top-right',
-      autoClose: 2500,
-      theme: 'dark',
+      autoClose: 2000,
+      theme: 'light',
     });
   };
 
   const selectedTechIds = selectedStack.map((item) => item.id);
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 font-sans flex flex-col justify-between">
+    <div className="min-h-screen bg-white text-slate-900 font-sans flex flex-col justify-between antialiased">
       <div>
-        <Navbar stackCount={selectedStack.length} />
+        <Navbar />
 
-        <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-16">
+        <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-12">
           <Banner />
 
           {/* Main Content Layout: Grid + Sidebar */}
@@ -107,9 +106,6 @@ function App() {
               />
             </div>
           </div>
-
-          {/* React Q&A Section */}
-          <ReactQA />
         </main>
       </div>
 
@@ -117,7 +113,7 @@ function App() {
 
       {/* Toast Notification Container */}
       <ToastContainer
-        toastClassName="!bg-slate-900 !border !border-slate-800 !text-slate-100 !rounded-2xl !font-sans"
+        toastClassName="!bg-white !border !border-slate-200 !text-slate-800 !rounded-xl !font-sans !shadow-lg text-xs font-medium"
       />
     </div>
   );
