@@ -11,7 +11,7 @@ export const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
           
           {/* Brand Block (2 cols on Desktop) */}
-          <div className="lg:col-span-2 space-y-3">
+          <div className="lg:col-span-2 space-y-3">   
             <div className="flex items-center gap-2 cursor-pointer" onClick={scrollToTop}>
               <div className="w-6 h-6 rounded-md gradient-bg flex items-center justify-center text-white font-extrabold text-[10px]">
                 DS
@@ -30,7 +30,7 @@ export const Footer = () => {
               <a
                 href="https://github.com/Shafi7055/dev-stack"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noopener noreferrer" // means 
                 className="hover:text-slate-900 transition-colors"
               >
                 GitHub

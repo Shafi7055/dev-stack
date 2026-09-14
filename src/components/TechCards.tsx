@@ -149,7 +149,7 @@ export const TechCards = ({
                   >
                     {isAdded ? (
                       <>
-                        <Check className="w-3.5 h-3.5" />
+                        <Check className="w-3.5 h-3.5" /> 
                         Added to Stack
                       </>
                     ) : (

@@ -9,24 +9,24 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
-  const [technologies, setTechnologies] = useState<TechnologyType[]>([]);
+  const [technologies, setTechnologies] = useState<TechnologyType[]>([]); // state to hold the list of technologies fetched from the JSON file
   const [selectedStack, setSelectedStack] = useState<TechnologyType[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
+  useEffect(() => { // here task is to fetch the list of technologies when the component mounts . mounts means 
     const fetchTechnologies = async () => {
       try {
         setIsLoading(true);
         setError(null);
         const response = await fetch('/technologies.json');
-        if (!response.ok) {
+        if (!response.ok) { 
           throw new Error(`Failed to load technologies (Status: ${response.status})`);
         }
         const data: TechnologyType[] = await response.json();
         setTechnologies(data);
       } catch (err: any) {
-        setError(err.message || 'An error occurred while fetching technology data.');
+        setError(err.message || 'An error occurred while fetching technology data.'); 
       } finally {
         setIsLoading(false);
       }
@@ -39,8 +39,8 @@ function App() {
     if (selectedStack.some((item) => item.id === tech.id)) {
       toast.info(`${tech.name} is already in your stack!`, {
         position: 'top-right',
-        autoClose: 2500,
-        theme: 'light',
+        autoClose: 2500, 
+        theme: 'light', 
       });
       return;
     }
@@ -82,18 +82,18 @@ function App() {
         <Navbar />
 
         <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-12">
-          <Banner />
+          <Banner /> // it has no opening and closing tags, so it should be self-closing because 
 
           {/* Main Content Layout: Grid + Sidebar */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             {/* Tech Cards (8 Cols on Desktop) */}
             <div className="lg:col-span-8">
-              <TechCards
-                technologies={technologies}
-                isLoading={isLoading}
+              <TechCards 
+                isLoading={isLoading} 
                 error={error}
                 selectedTechIds={selectedTechIds}
                 onAddToStack={handleAddToStack}
+                technologies={technologies}
               />
             </div>
 
@@ -112,7 +112,7 @@ function App() {
       <Footer />
 
       {/* Toast Notification Container */}
-      <ToastContainer
+      <ToastContainer 
         toastClassName="!bg-white !border !border-slate-200 !text-slate-800 !rounded-xl !font-sans !shadow-lg text-xs font-medium"
       />
     </div>
